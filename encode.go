@@ -108,3 +108,7 @@ func (e *EncodeBuf) Vector(v []TL) {
 		e.buf = append(e.buf, v.Encode()...)
 	}
 }
+
+func (e *EncodeBuf) GetBuf() []byte {
+	return e.buf
+}
