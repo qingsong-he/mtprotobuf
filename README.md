@@ -7,5 +7,5 @@ Compile:
 
 Usage:
     ./mtprotobuf-getcrc32 'boolTrue#997275b5 = Bool;'
-    ./mtprotobuf-gen-go example.tl
+    ./mtprotobuf-gen-go example.tl example
 ```
