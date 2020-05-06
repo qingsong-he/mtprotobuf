@@ -1,5 +1,7 @@
 # mtprotobuf
 
+### A sequence and reverse sequence protocol tool, fully referenced from https://github.com/sdidyk/mtproto
+
 ```
 Compile:
     go install -v github.com/qingsong-he/mtprotobuf/mtprotobuf-getcrc32
