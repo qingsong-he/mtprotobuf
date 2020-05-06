@@ -1,6 +1,6 @@
 # mtprotobuf
 
-### A sequence and reverse sequence protocol tool, fully referenced from https://github.com/sdidyk/mtproto
+##### A sequence and reverse sequence protocol tool, fully referenced from https://github.com/sdidyk/mtproto
 
 ```
 Compile:
