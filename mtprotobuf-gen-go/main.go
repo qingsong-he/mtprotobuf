@@ -186,7 +186,7 @@ func main() {
 
 					switch len(parts) {
 					case 3:
-						// default_banned_rights:#
+						// .e.g 'foobar:#' 'foobar1:int' 'foobar2:Foobar'
 						switch parts[2] {
 						case "#":
 							boolsByDecode = append(boolsByDecode, fmt.Sprintf("t.%s = d.Int()", strings.Title(parts[0])))
@@ -207,9 +207,9 @@ func main() {
 							notBoolsByDecode = append(notBoolsByDecode, fmt.Sprintf("// %s\nt.%s = d.Object()", strings.Join(parts, ""), strings.Title(parts[0])))
 						}
 					case 6:
-						// available_min_id:flags.9?int
+						// .e.g 'foobar:flags.0?int' 'foobar1:flags.1?true' 'foobar2:flags.2?Foobar'
 						switch parts[5] {
-						// tag_code:Vector<int>
+						// .e.g 'foobar:Vector<int>' 'foobar1:Vector<Foobar>'
 						case ">":
 							switch parts[4] {
 							case "int":
@@ -323,7 +323,7 @@ func main() {
 								strings.Title(parts[0])))
 						}
 					case 9:
-						// order:flags.0?Vector<DialogPeer>
+						// .e.g 'foobar:flags.0?Vector<int>' 'foobar1:flags.1?Vector<Foobar>'
 						switch parts[7] {
 						case "int":
 							bitNum, err := strconv.Atoi(parts[3][1:])
