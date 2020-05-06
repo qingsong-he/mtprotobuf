@@ -44,6 +44,9 @@ func main() {
 		if lineByTrim == "" {
 			continue
 		}
+		if strings.Count(lineByTrim, "\t") > 0 {
+			panic(lineByTrim)
+		}
 
 		var lineByTrimSplit []string
 		for _, v := range strings.Split(lineByTrim, " ") {
@@ -52,9 +55,6 @@ func main() {
 			}
 		}
 		lineByTrim = strings.Join(lineByTrimSplit, " ")
-		if strings.Count(lineByTrim, "\t") > 0 {
-			panic(lineByTrim)
-		}
 
 		cleanLine, crc32ID := common.GetTLCRC32ByLine(lineByTrim)
 		if strings.Count(cleanLine, "#") > 1 {
