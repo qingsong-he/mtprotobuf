@@ -157,6 +157,25 @@ func (m *DecodeBuf) VectorLong() []int64 {
 	return x
 }
 
+func (m *DecodeBuf) VectorDouble() []float64 {
+	constructor := m.UInt()
+	if constructor != CRC32_TL_vector_layer0 {
+		panic(decodeErrByNotVector)
+	}
+	size := m.Int()
+	if size < 0 {
+		panic(decodeErrBySizeNotRight)
+	}
+	x := make([]float64, size)
+	i := int32(0)
+	for i < size {
+		y := m.Double()
+		x[i] = y
+		i++
+	}
+	return x
+}
+
 func (m *DecodeBuf) VectorString() []string {
 	constructor := m.UInt()
 	if constructor != CRC32_TL_vector_layer0 {

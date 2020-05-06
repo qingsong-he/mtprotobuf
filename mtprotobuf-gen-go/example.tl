@@ -1,0 +1,5 @@
+// layer 128
+
+something#ff544e65 flags:# f1:int f2:long f3:double f4:string f5:Foobar f6:Vector<int> f7:Vector<long> f8:Vector<double> f9:Vector<string> f10:Vector<Foobar> f11:flags.0?int f12:flags.1?long f13:flags.2?double f14:flags.3?string  f14_1:flags.11?true f15:flags.4?Foobar f15_1:flags.12?true f16:flags.5?Vector<int> f17:flags.6?Vector<long> f18:flags.7?Vector<double> f19:flags.8?Vector<string> f20:flags.9?Vector<Foobar> f21:flags.10?true = SomeThing;
+
+something1#ff544e65 flags:# f1:int f2:long f3:double f4:string f5:Foobar f6:Vector<int> f7:Vector<long> f8:Vector<double> f9:Vector<string> f10:Vector<Foobar> f11:flags.0?int f12:flags.1?long f13:flags.2?double f14:flags.3?string  f14_1:flags.11?true f15:flags.4?Foobar f15_1:flags.12?true f16:flags.5?Vector<int> f17:flags.6?Vector<long> f18:flags.7?Vector<double> f19:flags.8?Vector<string> f20:flags.9?Vector<Foobar> f21:flags.10?true = SomeThing1;

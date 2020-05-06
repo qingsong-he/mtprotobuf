@@ -29,7 +29,7 @@ func TestEncodeAndDecode(t *testing.T) {
 	t.Log(dec.String() == "hello world")
 	t.Log(dec.BigInt().String() == big.NewInt(0xff).String())
 	t.Log(reflect.DeepEqual(dec.StringBytes(), []byte("xyz")))
-	t.Log(dec.Object().CRC32() == CRC32_TL_boolTrue_layer0)
+	t.Log(dec.Bool() == true)
 	t.Log(reflect.DeepEqual(dec.VectorInt(), []int32{1, 2, 3}))
 	t.Log(reflect.DeepEqual(dec.VectorLong(), []int64{4, 5, 6}))
 	t.Log(reflect.DeepEqual(dec.VectorString(), []string{"a", "b", "c"}))

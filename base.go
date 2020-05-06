@@ -17,7 +17,7 @@ var (
 	CRC32_TL_boolTrue_layer0   uint32 = 0x997275b5
 )
 
-var tlErrByTLRepeatReg = errors.New("tl repeat")
+var TLErrByTLRepeatReg = errors.New("tl repeat")
 
 func init() {
 
@@ -26,7 +26,7 @@ func init() {
 			return NewTL_boolFalse_layer0().Decode(m)
 		}
 	} else {
-		panic(tlErrByTLRepeatReg)
+		panic(TLErrByTLRepeatReg)
 	}
 
 	if _, has := DefaultDecodeMap[CRC32_TL_boolTrue_layer0]; !has {
@@ -34,7 +34,7 @@ func init() {
 			return NewTL_boolTrue_layer0().Decode(m)
 		}
 	} else {
-		panic(tlErrByTLRepeatReg)
+		panic(TLErrByTLRepeatReg)
 	}
 }
 

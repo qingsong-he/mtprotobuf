@@ -89,6 +89,18 @@ func (e *EncodeBuf) VectorLong(v []int64) {
 	e.buf = append(e.buf, x...)
 }
 
+func (e *EncodeBuf) VectorDouble(v []float64) {
+	x := make([]byte, 4+4+len(v)*8)
+	binary.LittleEndian.PutUint32(x, CRC32_TL_vector_layer0)
+	binary.LittleEndian.PutUint32(x[4:], uint32(len(v)))
+	i := 8
+	for _, v := range v {
+		binary.LittleEndian.PutUint64(x[i:], math.Float64bits(v))
+		i += 8
+	}
+	e.buf = append(e.buf, x...)
+}
+
 func (e *EncodeBuf) VectorString(v []string) {
 	x := make([]byte, 8)
 	binary.LittleEndian.PutUint32(x, CRC32_TL_vector_layer0)
