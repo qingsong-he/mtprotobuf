@@ -44,6 +44,10 @@ func main() {
 		if lineByTrim == "" {
 			continue
 		}
+		if strings.HasPrefix(lineByTrim, "---") {
+			continue
+		}
+
 		if strings.Count(lineByTrim, "\t") > 0 {
 			panic(lineByTrim)
 		}
