@@ -417,7 +417,7 @@ func main() {
 	// output all
 	{
 		output := bytes.NewBuffer(nil)
-		output.WriteString("package a\n\n")
+		output.WriteString("You_should_modify_the_package_name_and_format_the_code_yourself\n\n")
 		output.WriteString(fmt.Sprintf("import (\n%s\n)\n\n", "\"github.com/qingsong-he/mtprotobuf\""))
 		output.WriteString(fmt.Sprintf("var (\n%s\n)\n\n", strings.Join(crc32Ids, "\n")))
 		output.WriteString(fmt.Sprintf("func init() {\n%s\n}\n\n", strings.Join(inits, "\n")))
