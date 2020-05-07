@@ -1,6 +1,8 @@
 package mtprotobuf
 
 import (
+	"bytes"
+	"compress/gzip"
 	"encoding/binary"
 	"math"
 	"math/big"
@@ -123,4 +125,26 @@ func (e *EncodeBuf) Vector(v []TL) {
 
 func (e *EncodeBuf) GetBuf() []byte {
 	return e.buf
+}
+
+func GetBufWithGZip(bin []byte) []byte {
+	var buf bytes.Buffer
+	w := gzip.NewWriter(&buf)
+
+	_, err := w.Write(bin)
+	if err != nil {
+		panic(err)
+	}
+
+	err = w.Close()
+	if err != nil {
+		panic(err)
+	}
+	enc := NewEncodeBuf(buf.Len())
+	enc.StringBytes(buf.Bytes())
+
+	x := make([]byte, 4)
+	binary.LittleEndian.PutUint32(x, CRC32_TL_gzipPacked_layer0)
+
+	return append(x, enc.GetBuf()...)
 }

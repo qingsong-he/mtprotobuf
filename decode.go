@@ -6,6 +6,7 @@ import (
 	"encoding/binary"
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"math"
 	"math/big"
 )
@@ -232,31 +233,30 @@ func (m *DecodeBuf) Object() (r TL) {
 
 	switch constructor {
 	case CRC32_TL_gzipPacked_layer0:
-		obj := make([]byte, 0, 4096)
-
-		var buf bytes.Buffer
-		_, _ = buf.Write(m.StringBytes())
-		gz, _ := gzip.NewReader(&buf)
-
-		b := make([]byte, 4096)
-		for true {
-			n, _ := gz.Read(b)
-			obj = append(obj, b[0:n]...)
-			if n <= 0 {
-				break
-			}
+		gz, err := gzip.NewReader(bytes.NewReader(m.StringBytes()))
+		if err != nil {
+			panic(err)
 		}
+		obj, err := ioutil.ReadAll(gz)
+		if err != nil {
+			panic(err)
+		}
+
+		err = gz.Close()
+		if err != nil {
+			panic(err)
+		}
+
 		d := NewDecodeBuf(obj)
 		r = d.Object()
 
 	default:
-		r = m.ObjectGenerated(constructor)
-
+		r = m.objectGenerated(constructor)
 	}
 	return
 }
 
-func (m *DecodeBuf) ObjectGenerated(constructor uint32) (r TL) {
+func (m *DecodeBuf) objectGenerated(constructor uint32) (r TL) {
 	f, ok := DefaultDecodeMap[constructor]
 	if !ok {
 		panic(fmt.Errorf("constructor 0x%x not find", constructor))

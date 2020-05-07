@@ -190,6 +190,7 @@ func main() {
 						switch parts[2] {
 						case "#":
 							boolsByDecode = append(boolsByDecode, fmt.Sprintf("t.%s = d.Int()", strings.Title(parts[0])))
+							notBoolsByEncode = append(notBoolsByEncode, fmt.Sprintf("x.Int(t.%s)", strings.Title(parts[0])))
 						case "int":
 							notBoolsByEncode = append(notBoolsByEncode, fmt.Sprintf("// %s\nx.Int(t.%s)", strings.Join(parts, ""), strings.Title(parts[0])))
 							notBoolsByDecode = append(notBoolsByDecode, fmt.Sprintf("// %s\nt.%s = d.Int()", strings.Join(parts, ""), strings.Title(parts[0])))
