@@ -144,7 +144,7 @@ func GetBufWithGZip(bin []byte) []byte {
 	enc.StringBytes(buf.Bytes())
 
 	x := make([]byte, 4)
-	binary.LittleEndian.PutUint32(x, CRC32_TL_gzipPacked_layer0)
+	binary.LittleEndian.PutUint32(x, CRC32_TL_gzip_packed_layer0)
 
 	return append(x, enc.GetBuf()...)
 }

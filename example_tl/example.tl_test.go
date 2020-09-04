@@ -55,10 +55,12 @@ func TestNewTL_something_layer128(t *testing.T) {
 	obj.F21 = true
 
 	objBin := obj.Encode()
+	t.Log("objBin size:", len(objBin))
 	tlObj := mtprotobuf.NewDecodeBuf(objBin).Object()
 	t.Logf("%#v", *tlObj.(*TL_something_layer128))
 
 	objBinByGZip := mtprotobuf.GetBufWithGZip(objBin)
+	t.Log("objBinByGZip size:", len(objBinByGZip))
 	tlObjByGZip := mtprotobuf.NewDecodeBuf(objBinByGZip).Object()
 	t.Logf("%#v", *tlObjByGZip.(*TL_something_layer128))
 }
@@ -113,10 +115,12 @@ func TestNewTL_something1_layer128(t *testing.T) {
 	obj.F21 = true
 
 	objBin := obj.Encode()
+	t.Log("objBin size:", len(objBin))
 	tlObj := mtprotobuf.NewDecodeBuf(objBin).Object()
 	t.Logf("%#v", *tlObj.(*TL_something1_layer128))
 
 	objBinByGZip := mtprotobuf.GetBufWithGZip(objBin)
+	t.Log("objBinByGZip size:", len(objBinByGZip))
 	tlObjByGZip := mtprotobuf.NewDecodeBuf(objBinByGZip).Object()
 	t.Logf("%#v", *tlObjByGZip.(*TL_something1_layer128))
 }

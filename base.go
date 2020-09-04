@@ -5,16 +5,16 @@ import "errors"
 /*
 // layer 0
 vector#1cb5c415 {t:Type} # [ t ] = Vector t;
-gzipPacked#0x814a3c0 = GZipPacked;
+gzip_packed#3072cfa1 packed_data:string = Object;
 boolFalse#bc799737 = Bool;
 boolTrue#997275b5 = Bool;
 */
 
 var (
-	CRC32_TL_vector_layer0     uint32 = 0x1cb5c415
-	CRC32_TL_gzipPacked_layer0 uint32 = 0x814a3c0
-	CRC32_TL_boolFalse_layer0  uint32 = 0xbc799737
-	CRC32_TL_boolTrue_layer0   uint32 = 0x997275b5
+	CRC32_TL_vector_layer0      uint32 = 0x1cb5c415
+	CRC32_TL_gzip_packed_layer0 uint32 = 0x3072cfa1
+	CRC32_TL_boolFalse_layer0   uint32 = 0xbc799737
+	CRC32_TL_boolTrue_layer0    uint32 = 0x997275b5
 )
 
 var TLErrByTLRepeatReg = errors.New("tl repeat")

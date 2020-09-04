@@ -232,7 +232,7 @@ func (m *DecodeBuf) Object() (r TL) {
 	constructor := m.UInt()
 
 	switch constructor {
-	case CRC32_TL_gzipPacked_layer0:
+	case CRC32_TL_gzip_packed_layer0:
 		gz, err := gzip.NewReader(bytes.NewReader(m.StringBytes()))
 		if err != nil {
 			panic(err)
